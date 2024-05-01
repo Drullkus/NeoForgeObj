@@ -87,7 +87,7 @@ runs {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
 
         dependencies {
-            runtime "de.javagl:obj:0.4.0"
+            runtime configurations.libraries
         }
     }
 

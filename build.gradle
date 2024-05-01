@@ -4,6 +4,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.109'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 version = mod_version
@@ -26,6 +27,11 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 configurations {
     libraries {}
     implementation.extendsFrom libraries
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    configurations = [project.configurations.libraries]
 }
 
 dependencies {
@@ -173,3 +179,5 @@ idea {
         downloadJavadoc = true
     }
 }
+
+build.dependsOn shadowJar
